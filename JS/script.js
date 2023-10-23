@@ -45,21 +45,25 @@ const memberList = [
         role: 'Graphic Designer',
         picture: 'barbara-ramos-graphic-designer.jpg'
     },
-]
+];
+gallery();
+
+let btn = document.querySelector('.btn');
+btn.addEventListener('click', aggiungiMembro);
 
 // stampo in console in successione tutti i dati in ordine
+function gallery() {
+    for (let i = 0; i < memberList.length; i++) {
 
-for (let i = 0; i < memberList.length; i++) {
-
-    console.group('card');
-    console.log(memberList[i].name);
-    console.log(memberList[i].role);
-    console.log(memberList[i].picture);
-    console.groupEnd();
-    let position = document.getElementById('gallery')
-    let gallery = document.createElement('div');
-    gallery.classList.add('col');
-    gallery.innerHTML = ` 
+        console.group('card');
+        console.log(memberList[i].name);
+        console.log(memberList[i].role);
+        console.log(memberList[i].picture);
+        console.groupEnd();
+        let position = document.getElementById('gallery');
+        let gallery = document.createElement('div');
+        gallery.classList.add('col');
+        gallery.innerHTML = ` 
         <div class="card mb-5" style="width: 18rem;">
             <img src="Img/${memberList[i].picture}" class="card-img-top" alt="${memberList[i].picture}">
             <div class="card-body">
@@ -67,7 +71,20 @@ for (let i = 0; i < memberList.length; i++) {
                 <p class="card-text text-center">${memberList[i].role}</p>
             </div>
         </div> `
-    position.append(gallery);
-};
+        position.append(gallery);
+    }
+}
+
+function aggiungiMembro() {
+    let position = document.getElementById('gallery');
+    position.innerHTML ='';
+    let card = {
+        name: document.getElementById('nome').value,
+        role: document.getElementById('ruolo').value,
+        picture:"avatar2.png"
+    };
+    memberList.push(card);
+    return gallery();
+}
 
 
