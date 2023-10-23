@@ -56,6 +56,18 @@ for (let i = 0; i < memberList.length; i++) {
     console.log(memberList[i].role);
     console.log(memberList[i].picture);
     console.groupEnd();
-}
+    let position = document.getElementById('gallery')
+    let gallery = document.createElement('div');
+    gallery.classList.add('col');
+    gallery.innerHTML = ` 
+        <div class="card mb-5" style="width: 18rem;">
+            <img src="Img/${memberList[i].picture}" class="card-img-top" alt="${memberList[i].picture}">
+            <div class="card-body">
+                <h5 class="card-title text-center">${memberList[i].name}</h5>
+                <p class="card-text text-center">${memberList[i].role}</p>
+            </div>
+        </div> `
+    position.append(gallery);
+};
 
 
